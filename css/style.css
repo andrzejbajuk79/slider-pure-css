@@ -1,0 +1,177 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	
+  background-image: url(http://subtlepatterns.com/patterns/retina_wood.png);
+  background-size:100%;
+  
+}
+.container{
+	position: relative;
+	width: 900px;
+	height: 400px;
+	margin: 60px auto 0;
+	font: 1em 'Rationale',sans-serif;
+}
+.slider, .img {
+	width: inherit;
+	height: inherit;
+}
+.slider {
+	position: relative;
+	overflow: hidden;
+	background-color: #000;
+	border:8px solid #eee;
+	border-radius: 5px;
+	box-shadow: 0 7px 20px rgba(0,0,0,.5);
+
+}
+.img {
+	position: absolute;
+	margin-left: -8px;
+	perspective: 500px;
+}
+
+/*.img1 .frag {
+	background: url(images/auto.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}*/
+
+.img1 .frag {background-image: url(../images/1.jpg)}
+.img2 .frag {background-image: url(../images/2.jpg) }
+.img3 .frag {background-image: url(../images/3.jpg) }
+.img4 .frag {background-image: url(../images/4.jpg)}
+.img5 .frag {background-image: url(../images/5.jpg)}
+.img6 .frag {background-image: url(../images/6.jpg)}	
+
+.frag {
+	width: 150px;
+	height: inherit;
+	float: left;
+	opacity: 0;
+	z-index: 0;
+	transform-origin: center right;
+	transform: rotateY(90deg) translateZ(100px) scale(1.5);
+	transition: transform .6s, opacity .6s, -webkit-filter 2s ease-out;
+	-webkit-filter: saturate(0) blur(10px) brightness(.6) contrast(4);
+}	
+.img .frag2  {
+	background-position: -150px 0;
+	transition-delay: .2s;
+}
+.img .frag3  {
+	background-position: -300px 0;
+	transition-delay: .4s;
+}
+.img .frag4  {
+	background-position: -450px 0;
+	transition-delay: .6s;
+}
+.img .frag5  {
+	background-position: -600px 0;
+	transition-delay: .8s;
+}
+.img .frag6  {
+	background-position: -750px 0;
+	transition-delay: 1s;
+}
+#slide1:checked ~ .slider .img1 .frag,
+#slide2:checked ~ .slider .img2 .frag,
+#slide3:checked ~ .slider .img3 .frag,
+#slide4:checked ~ .slider .img4 .frag,
+#slide5:checked ~ .slider .img5 .frag,
+#slide6:checked ~ .slider .img6 .frag {
+	transform: rotateY(0) translateZ(0) scale(1);
+	-webkit-filter: saturate(1) blur(0) brightness(1) contrast(1);
+	opacity: 1;
+	z-index: 1;
+}
+.controls {
+	position: absolute;
+	bottom: -50px;
+	left: 50%; 
+	margin-left: -115px; /*(6elem30px+5el10px)/2=115px*/
+
+}
+.controls label {
+	display: block;
+	height: 10px;
+	width: 30px;
+	float: left;
+	background-color: #000;
+	margin-right: 10px;
+	cursor: pointer;
+	opacity: .2;
+	transition:opacity .5s;
+}
+.controls label:hover,
+.side-controls label:hover,
+#slide1:checked ~ .controls label:nth-of-type(1),
+#slide2:checked ~ .controls label:nth-of-type(2),
+#slide3:checked ~ .controls label:nth-of-type(3),
+#slide4:checked ~ .controls label:nth-of-type(4),
+#slide5:checked ~ .controls label:nth-of-type(5),
+#slide6:checked ~ .controls label:nth-of-type(6) {
+	opacity: .8;
+}
+.side-controls label {
+	position: absolute;
+	display: block;
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+	top: 50%;	
+	margin-top: -15px;
+	cursor: pointer;
+	opacity: .2;
+	transition:opacity .5s;
+}
+
+#slide1:checked ~ .side-controls label:nth-of-type(6),
+#slide2:checked ~ .side-controls label:nth-of-type(1),
+#slide3:checked ~ .side-controls label:nth-of-type(2),
+#slide4:checked ~ .side-controls label:nth-of-type(3),
+#slide5:checked ~ .side-controls label:nth-of-type(4),
+#slide6:checked ~ .side-controls label:nth-of-type(5) {
+	left: -40px;
+	border-right: 40px solid #000;
+}
+#slide1:checked ~ .side-controls label:nth-of-type(2),
+#slide2:checked ~ .side-controls label:nth-of-type(3),
+#slide3:checked ~ .side-controls label:nth-of-type(4),
+#slide4:checked ~ .side-controls label:nth-of-type(5),
+#slide5:checked ~ .side-controls label:nth-of-type(6),
+#slide6:checked ~ .side-controls label:nth-of-type(1) {
+	right: -40px;
+	border-left: 40px solid #000;
+}
+.slider {
+	background-color: #000;
+}
+.container > input {
+	display:none;
+}
+/*.slider {
+	display: none;
+}*/
+.captions > div {
+	position: absolute;
+	right: 20px;
+	bottom: 7px;
+	color: transparent;
+	text-shadow: 0 0 60px transparent;
+	font-size: 3em;
+	z-index: 1;
+	text-transform: uppercase;
+	transition: text-shadow 2s;
+
+}
+#slide2:checked ~ .slider .captions .c2,
+#slide1:checked ~ .slider .captions .c1,
+#slide3:checked ~ .slider .captions .c3,
+#slide4:checked ~ .slider .captions .c4,
+#slide5:checked ~ .slider .captions .c5,
+#slide6:checked ~ .slider .captions .c6 {
+	text-shadow: 0 0 0 rgba(255,255,255,.9)
+}
