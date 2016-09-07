@@ -1,4 +1,4 @@
-# slieders pure CCs no JAVASCRIPT
+# slieders pure CSS no JAVASCRIPT
 using new features of css3 like transition, perspective,transform..
 
 ##Instruction
